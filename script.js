@@ -1,3 +1,36 @@
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+
+// Move cursor with mouse
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// Function to add hover effects to all interactive elements
+function addCursorHoverEffects() {
+    const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .service-card, .contact-item, .social-link, .cta-primary, .nav-links a, .project-arrow');
+    
+    interactiveElements.forEach(el => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+        el.addEventListener('mouseenter', handleMouseEnter);
+        el.addEventListener('mouseleave', handleMouseLeave);
+    });
+}
+
+function handleMouseEnter() {
+    cursor.classList.add('hover');
+}
+
+function handleMouseLeave() {
+    cursor.classList.remove('hover');
+}
+
+// Initialize cursor effects
+addCursorHoverEffects();
+
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
