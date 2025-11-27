@@ -17,6 +17,9 @@
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     --gradient-bg: radial-gradient(circle at 50% 50%, rgba(139, 126, 200, 0.15) 0%, rgba(139, 126, 200, 0.05) 40%, transparent 70%), #121212;
     --gradient-accent: linear-gradient(135deg, #8B7EC8 0%, #A391E0 100%);
+    /* Contact-specific background — subtle accent so contact is visually distinct but cohesive */
+    --bg-contact: linear-gradient(180deg, rgba(139,126,200,0.04) 0%, #0f0f0f 100%);
+    --contact-accent: rgba(139,126,200,0.06);
 }
 
 /* Custom Cursor with Color Inversion */
@@ -336,6 +339,21 @@ nav.scrolled {
     opacity: 0.9;
 }
 
+/* Icon images inside about features */
+.about-feature-icon img {
+    width: 56px;
+    height: 56px;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .about-feature-icon img {
+        width: 48px;
+        height: 48px;
+    }
+}
+
 .about-feature span {
     font-weight: 400;
     font-size: 1rem;
@@ -475,7 +493,9 @@ nav.scrolled {
 
 /* Contact Section */
 #contact {
-    background: #0f0f0f;
+    background: var(--bg-contact);
+    /* faint accent line to separate the section while keeping the same palette */
+    border-top: 1px solid rgba(139,126,200,0.04);
 }
 
 .contact-content {
@@ -498,7 +518,7 @@ nav.scrolled {
 .contact-item {
     text-align: center;
     padding: 2rem 1.5rem;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--contact-accent);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
@@ -527,6 +547,25 @@ nav.scrolled {
     color: var(--text-primary);
     font-weight: 400;
     line-height: 1.5;
+}
+
+/* Contact link styling to blend with site and remain accessible */
+.contact-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+    outline: none;
+}
+
+.contact-link:focus {
+    box-shadow: 0 0 0 4px rgba(163,145,224,0.06);
+    border-radius: 6px;
 }
 
 .contact-form {
